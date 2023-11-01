@@ -10,9 +10,9 @@
     <div class="stopwatch">
         <div class="time" id="stopwatch">00:00:00:00</div>
         <div class="controls">
-            <button id="start">スタート</button>
-            <button id="stop" disabled>ストップ</button>
-            <button id="reset" disabled>リセット</button>
+            <button id="start" onclick="startStopwatch()">スタート</button>
+            <button id="stop" onclick="stopStopwatch()" disabled>ストップ</button>
+            <button id="reset" onclick="resetStopwatch()" disabled>リセット</button>
         </div>
     </div>
     <script src="script.js"></script>
