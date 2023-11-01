@@ -1,20 +1,27 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css">
-  <title>ストップウォッチ</title>
+    <title>ストップウォッチ</title>
+    <style>
+        /* ストップウォッチのコンテナを中央揃えにし、フォントサイズと余白を設定します。 */
+        .stopwatch-container {
+            text-align: center;
+            font-size: 36px;
+            margin: 20px;
+        }
+        /* コントロールボタンの余白を設定します。 */
+        .controls {
+            margin: 20px;
+        }
+    </style>
 </head>
 <body>
-  <div class="stopwatch"></div>
-    <div class="time">00:00:00</div>
-    <div class="controls"></div>
-      <button id="start">スタート</button>
-      <button id="stop">ストップ</button>
-      <button id="reset">リセット</button>
-    
-  <script src="script.js"></script>
-  <link rel="stylesheet" href="styles.css">
-</body>
-</html>
+    <div class="stopwatch-container">
+        <!-- ストップウォッチの表示部分を設定します。 -->
+        <div id="stopwatch">00:00:00</div>
+    </div>
+    <div class="controls">
+        <!-- スタート/ストップボタンとリセットボタンを設定します。 -->
+        <button id="startStop" onclick="startStop()">スタート</button>
+        <button id="reset" onclick="reset()">リセット</button>
+    </div>
