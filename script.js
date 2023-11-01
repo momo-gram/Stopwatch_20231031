@@ -23,16 +23,17 @@ function stopStopwatch() {
     }
 }
 
-function resetStopwatch() {
+function startStopwatch() {
     if (!running) {
         // リセットボタンがクリックされたときの処理
-        startTime = 0;
-        updateTime();
-        document.getElementById('start').disabled = false;
-        document.getElementById('stop').disabled = true;
+        startTime = Date.now() - (startTime ? startTime : 0);
+        intervalId = setInterval(updateTime, 1000);
+        running = true;
+        document.getElementById('start').disabled = true;
+        document.getElementById('stop').disabled = false;
+        document.getElementById('reset').disabled = true; // リセットボタンも無効に
     }
 }
-
 function updateTime() {
     const currentTime = Date.now();
     const elapsedTime = new Date(currentTime - startTime);
