@@ -1,14 +1,17 @@
+/* ストップウォッチ全体のスタイリング */
 .stopwatch {
     text-align: center;
     font-size: 24px;
     margin-top: 50px;
 }
 
+/* 現在の時間のスタイリング */
 .time {
     font-size: 36px;
     margin-bottom: 10px;
 }
 
+/* ボタンのスタイリング */
 .controls button {
     margin: 5px;
 }
