@@ -14,6 +14,6 @@
 /* ボタンのスタイリング */
 .controls button {
     margin: 5px;
-    background-color: lightblue; /* ボタンの背景色（水色） */
-    border: 2px solid blue; /* ボタンの外枠（太い） */
+    background-color: lightblue; /* ボタンの背景色を水色に設定 */
+    border: 2px solid blue; /* ボタンの外枠を太くする */
 }
