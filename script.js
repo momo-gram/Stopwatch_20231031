@@ -1,3 +1,4 @@
+// script.js
 let timerInterval;
 let running = false;
 let elapsedTime = 0;
