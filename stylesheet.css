@@ -1,0 +1,14 @@
+.stopwatch {
+    text-align: center;
+    font-size: 24px;
+    margin-top: 50px;
+}
+
+.time {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.controls button {
+    margin: 5px;
+}
