@@ -32,7 +32,8 @@ function reset() {
   clearInterval(interval);
   isRunning = false;
   startButton.disabled = false;
-  interval = null;
+  interval = null; // `null` に設定
+  startTime = null; // `null` に設定
   updateTime();
 }
 
