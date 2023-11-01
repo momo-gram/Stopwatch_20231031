@@ -1,9 +1,10 @@
 let startTime = 0;
-let intervalId = null; // インターバル ID を格納する変数を宣言
+let intervalId = null;
+let running = false;
 
 function startStopwatch() {
     if (!running) {
-        startTime = Date.now() - (running ? startTime : 0);
+        startTime = Date.now() - (running ? Date.now() - startTime : 0); // 開始時刻の計算を修正
         intervalId = setInterval(updateTime, 10);
         running = true;
         document.getElementById('start').disabled = true;
@@ -14,7 +15,7 @@ function startStopwatch() {
 
 function stopStopwatch() {
     if (running) {
-        clearInterval(intervalId); // 正しいインターバル ID を使用してクリア
+        clearInterval(intervalId);
         running = false;
         document.getElementById('start').disabled = false;
         document.getElementById('stop').disabled = true;
