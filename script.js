@@ -1,6 +1,5 @@
 let startTime = 0;
-let intervalId = null;
-let running = false;
+let intervalId = null; // インターバル ID を格納する変数を宣言
 
 function startStopwatch() {
     if (!running) {
@@ -15,7 +14,7 @@ function startStopwatch() {
 
 function stopStopwatch() {
     if (running) {
-        clearInterval(intervalId);
+        clearInterval(intervalId); // 正しいインターバル ID を使用してクリア
         running = false;
         document.getElementById('start').disabled = false;
         document.getElementById('stop').disabled = true;
