@@ -2,15 +2,13 @@
 let startTime = 0;
 let intervalId = null;
 let running = false;
-let buttonClicked = false;
 
 // スタートボタンをクリックしたときの処理
 function startStopwatch() {
-    if (!running && !buttonClicked) {
+    if (!running) {
         startTime = Date.now() - (running ? Date.now() - startTime : 0);
-        intervalId = setInterval(updateTime, 10);
+        intervalId = setInterval(updateTime, 1000); // 1秒ごとに更新
         running = true;
-        buttonClicked = true;
         document.getElementById('start').disabled = true;
         document.getElementById('stop').disabled = false;
         document.getElementById('reset').disabled = true;
@@ -22,7 +20,6 @@ function stopStopwatch() {
     if (running) {
         clearInterval(intervalId);
         running = false;
-        buttonClicked = false;
         document.getElementById('start').disabled = false;
         document.getElementById('stop').disabled = true;
         document.getElementById('reset').disabled = false;
@@ -35,7 +32,6 @@ function resetStopwatch() {
         clearInterval(intervalId);
         startTime = 0;
         updateTime();
-        buttonClicked = false;
         document.getElementById('start').disabled = false;
         document.getElementById('stop').disabled = true;
         document.getElementById('reset').disabled = true;
@@ -46,9 +42,8 @@ function resetStopwatch() {
 function updateTime() {
     const currentTime = Date.now();
     const elapsedTime = new Date(currentTime - startTime);
-    const minutes = elapsedTime.getUTCMinutes();
-    const seconds = elapsedTime.getUTCSeconds();
-    const milliseconds = Math.floor(elapsedTime.getUTCMilliseconds() / 10);
-    const hours = Math.floor(minutes / 60);
-    document.querySelector('.time').textContent = `${String(hours).padStart(2, '0')}:${String(minutes % 60).padStart(2, '0')}:${String(seconds).padStart(2, '0')}:${String(milliseconds).padStart(2, '0')}`;
+    const hours = String(elapsedTime.getUTCHours()).padStart(2, '0');
+    const minutes = String(elapsedTime.getUTCMinutes()).padStart(2, '0');
+    const seconds = String(elapsedTime.getUTCSeconds()).padStart(2, '0');
+    document.querySelector('.time').textContent = `${hours}:${minutes}:${seconds}`;
 }
