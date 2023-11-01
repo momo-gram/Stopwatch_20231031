@@ -1,37 +1,42 @@
-let isRunning = false; // ストップウォッチが実行中かどうかを示すフラグ
-let startTime; // ストップウォッチがスタートした時間
-let interval; // タイマーインターバルID
+// script.js
+let timerInterval;
+let running = false;
+let elapsedTime = 0;
 
-// スタート/ストップボタンのクリック時に呼び出される関数
-function startStop() {
-    if (isRunning) {
-        clearInterval(interval);
-        document.getElementById('startStop').textContent = 'スタート';
-    } else {
-        startTime = new Date().getTime() - (startTime || 0);
-        interval = setInterval(updateDisplay, 10);
-        document.getElementById('startStop').textContent = 'ストップ';
-    }
-    isRunning = !isRunning;
+function startStopwatch() {
+  if (!running) {
+    running = true;
+    document.getElementById("start").disabled = true;
+    document.getElementById("stop").disabled = false;
+    document.getElementById("reset").disabled = true;
+    timerInterval = setInterval(updateTime, 10);
+  }
 }
 
-// リセットボタンのクリック時に呼び出される関数
-function reset() {
-    clearInterval(interval);
-    document.getElementById('startStop').textContent = 'スタート';
-    isRunning = false;
-    startTime = null;
-    updateDisplay();
+function stopStopwatch() {
+  if (running) {
+    running = false;
+    document.getElementById("start").disabled = false;
+    document.getElementById("stop").disabled = true;
+    document.getElementById("reset").disabled = false;
+    clearInterval(timerInterval);
+  }
 }
 
-// ストップウォッチの表示を更新する関数
-function updateDisplay() {
-    const currentTime = new Date().getTime() - (startTime || 0);
-    const minutes = Math.floor(currentTime / 60000);
-    const seconds = Math.floor((currentTime % 60000) / 1000);
-    const milliseconds = (currentTime % 1000);
-    document.getElementById('stopwatch').textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}:${String(milliseconds).padStart(3, '0')}`;
+function resetStopwatch() {
+  if (!running) {
+    elapsedTime = 0;
+    updateTime();
+  }
 }
 
-// ページ読み込み時に初期表示を行います。
-updateDisplay();
+function updateTime() {
+  const centiseconds = String(elapsedTime % 100).padStart(2, "0");
+  const seconds = String(Math.floor((elapsedTime / 100) % 60)).padStart(2, "0");
+  const minutes = String(Math.floor((elapsedTime / 6000) % 60)).padStart(2, "0");
+  const hours = String(Math.floor(elapsedTime / 360000)).padStart(2, "0");
+  document.getElementById("stopwatch").textContent = `${hours}:${minutes}:${seconds}:${centiseconds}`;
+  elapsedTime += 1;
+}
+
+updateTime();
