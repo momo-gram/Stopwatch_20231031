@@ -1,40 +1,14 @@
-let startTime = 0;
-let intervalId = null;
-let running = false;
+<body>
+  <div class="wrapper">
 
-function startStopwatch() {
-    if (!running) {
-        startTime = Date.now() - (startTime ? startTime : 0);
-        intervalId = setInterval(updateTime, 1000);
-        running = true;
-        document.getElementById('start').disabled = true;
-        document.getElementById('stop').disabled = false;
-    }
-}
+//計測時間を表示
+    <div id="time">00:00:000</div>
+    <div>
 
-function stopStopwatch() {
-    if (running) {
-        clearInterval(intervalId);
-        running = false;
-        document.getElementById('start').disabled = false;
-        document.getElementById('stop').disabled = true;
-    }
-}
-
-function resetStopwatch() {
-    if (!running) {
-        startTime = 0;
-        updateTime();
-        document.getElementById('start').disabled = false;
-        document.getElementById('stop').disabled = true;
-    }
-}
-
-function updateTime() {
-    const currentTime = Date.now();
-    const elapsedTime = new Date(currentTime - startTime);
-    const hours = elapsedTime.getUTCHours();
-    const minutes = elapsedTime.getUTCMinutes();
-    const seconds = elapsedTime.getUTCSeconds();
-    document.querySelector('.time').textContent = `${hours}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-}
+// スタート・ストップ・リセットボタン
+      <button id="start" onclick="start()">Start</button>
+      <button id="stop" onclick="stop()" disabled>Stop</button>
+      <button id="reset" onclick="reset()" disabled>Reset</button>
+    </div>
+  </div>
+</body>
