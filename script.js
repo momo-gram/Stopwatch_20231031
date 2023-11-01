@@ -28,6 +28,7 @@ function stopStopwatch() {
 function resetStopwatch() {
     if (!running) {
         // リセットボタンがクリックされたときの処理
+        startTime = 0; // ストップウォッチの開始時刻をリセット
         updateTime(); // 時間表示をリセット
         document.getElementById('start').disabled = false; // スタートボタンを有効にする
         document.getElementById('stop').disabled = true; // ストップボタンを無効にする
