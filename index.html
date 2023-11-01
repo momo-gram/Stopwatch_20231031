@@ -1,18 +1,20 @@
 <!DOCTYPE html>
-<html lang="Ja">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Stopwatch</title>
+</head>
 <body>
-  <div class="wrapper">
-
- <!-- 計測時間を表示 -->
-    <div id="time">00:00:00:00</div>
-    <div>
-
-<!-- スタート・ストップ・リセットボタン -->
-      <button id="start" onclick="start()">Start</button>
-      <button id="stop" onclick="stop()" disabled>Stop</button>
-      <button id="reset" onclick="reset()" disabled>Reset</button>
+    <div class="stopwatch">
+        <div class="time">0:00:00</div>
+        <div class="controls">
+            <button id="start" onclick="startStopwatch()">Start</button>
+            <button id="stop" onclick="stopStopwatch()" disabled>Stop</button>
+            <button id="reset" onclick="resetStopwatch()">Reset</button>
+        </div>
     </div>
-  </div>
+    <script src="script.js"></script>
 </body>
-
 </html>
