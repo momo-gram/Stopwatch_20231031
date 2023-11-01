@@ -1,16 +1,29 @@
-.stopwatch {
-    text-align: center;
-    font-size: 24px;
-    margin-top: 50px;
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
 }
 
-.time {
-    font-size: 36px;
-    margin-bottom: 10px;
+.stopwatch {
+    text-align: center;
+    font-size: 2em;
 }
 
 .controls button {
+    background-color: #00bcd4;
+    border: 2px solid #0073aa;
+    color: white;
+    padding: 10px 20px;
     margin: 5px;
-    background-color: lightblue;
-    border: 2px solid blue;
+    cursor: pointer;
+}
+
+.controls button:disabled {
+    background-color: #b0b0b0;
+    border: 2px solid #888888;
+    color: #555555;
+    cursor: not-allowed;
 }
