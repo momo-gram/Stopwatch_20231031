@@ -2,6 +2,10 @@ let startTime = 0;
 let intervalId = null;
 let running = false;
 
+document.getElementById('start').addEventListener('click', startStopwatch);
+document.getElementById('stop').addEventListener('click', stopStopwatch);
+document.getElementById('reset').addEventListener('click', resetStopwatch);
+
 function startStopwatch() {
     if (!running) {
         startTime = Date.now() - (running ? Date.now() - startTime : 0);
@@ -39,4 +43,5 @@ function updateTime() {
     const minutes = elapsedTime.getUTCMinutes();
     const seconds = elapsedTime.getUTCSeconds();
     const milliseconds = elapsedTime.getUTCMilliseconds();
-    document.querySelector('.time').textContent = `${String(minutes).padStart(2, '0')
+    document.getElementById('stopwatch').textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}:${String(milliseconds).padStart(2, '0')}`;
+}
