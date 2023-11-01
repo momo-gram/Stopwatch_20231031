@@ -1,44 +1,10 @@
-/* styles.css */
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #f0f0f0;
-  margin: 0;
+/* ストップウォッチのコンテナを中央揃えにし、フォントサイズと余白を設定します。 */
+.stopwatch-container {
+    text-align: center;
+    font-size: 36px;
+    margin: 20px;
 }
-
-.stopwatch {
-  background-color: white;
-  border: 5px solid #00bfff;
-  border-radius: 10px;
-  padding: 20px;
-  text-align: center;
-}
-
-.time {
-  font-size: 40px;
-  margin: 20px 0;
-}
-
+/* コントロールボタンの余白を設定します。 */
 .controls {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-}
-
-button {
-  background-color: #00bfff;
-  border: 2px solid #0055a5;
-  border-radius: 5px;
-  color: white;
-  font-size: 20px;
-  padding: 10px 20px;
-  cursor: pointer;
-}
-
-button:disabled {
-  background-color: #d3d3d3;
-  border: 2px solid #a9a9a9;
-  cursor: not-allowed;
+    margin: 20px;
 }
