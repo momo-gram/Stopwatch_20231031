@@ -1,49 +1,45 @@
-// script.js
-const startButton = document.getElementById('start');
-const stopButton = document.getElementById('stop');
-const resetButton = document.getElementById('reset');
-const timeDisplay = document.getElementById('time');
-
 let startTime;
-let elapsedTime = 0;
-let timerInterval;
+let interval;
+let isRunning = false;
 
-function startTimer() {
-  startButton.disabled = true; // スタートボタンを無効にする
-  stopButton.disabled = false; // ストップボタンを有効にする
-  startTime = Date.now() - elapsedTime;
-  timerInterval = setInterval(updateTime, 10);
+const timeDisplay = document.querySelector(".time");
+const startButton = document.getElementById("start");
+const stopButton = document.getElementById("stop");
+const resetButton = document.getElementById("reset");
+
+startButton.addEventListener("click", start);
+stopButton.addEventListener("click", stop);
+resetButton.addEventListener("click", reset);
+
+function start() {
+  if (!isRunning) {
+    startTime = Date.now() - (interval || 0);
+    interval = setInterval(updateTime, 10);
+    isRunning = true;
+    startButton.disabled = true;
+  }
 }
 
-function stopTimer() {
-  startButton.disabled = false; // スタートボタンを有効にする
-  stopButton.disabled = true; // ストップボタンを無効にする
-  clearInterval(timerInterval);
+function stop() {
+  if (isRunning) {
+    clearInterval(interval);
+    isRunning = false;
+    startButton.disabled = false;
+  }
 }
 
-function resetTimer() {
-  startButton.disabled = false; // スタートボタンを有効にする
-  stopButton.disabled = true; // ストップボタンを無効にする
-  clearInterval(timerInterval);
-  elapsedTime = 0;
+function reset() {
+  clearInterval(interval);
+  isRunning = false;
+  startButton.disabled = false;
+  interval = 0;
   updateTime();
 }
 
 function updateTime() {
-  const currentTime = Date.now();
-  elapsedTime = currentTime - startTime;
-  const formattedTime = formatTime(elapsedTime);
-  timeDisplay.innerText = formattedTime;
+  const elapsedTime = Date.now() - startTime;
+  const minutes = Math.floor(elapsedTime / 60000);
+  const seconds = Math.floor((elapsedTime % 60000) / 1000);
+  const milliseconds = (elapsedTime % 1000).toString().slice(0, 2);
+  timeDisplay.textContent = `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}:${String(milliseconds).padStart(2, "0")}`;
 }
-
-function formatTime(milliseconds) {
-  const date = new Date(milliseconds);
-  const minutes = date.getUTCMinutes().toString().padStart(2, '0');
-  const seconds = date.getSeconds().toString().padStart(2, '0');
-  const milliseconds = date.getMilliseconds().toString().padStart(3, '0');
-  return `${minutes}:${seconds}:${milliseconds}`;
-}
-
-startButton.addEventListener('click', startTimer);
-stopButton.addEventListener('click', stopTimer);
-resetButton.addEventListener('click', resetTimer);
