@@ -39,5 +39,4 @@ function updateTime() {
     const minutes = elapsedTime.getUTCMinutes();
     const seconds = elapsedTime.getUTCSeconds();
     const milliseconds = elapsedTime.getUTCMilliseconds();
-    document.querySelector('.time').textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}:${String(milliseconds).padStart(2, '0')}`;
-}
+    document.querySelector('.time').textContent = `${String(minutes).padStart(2, '0')
