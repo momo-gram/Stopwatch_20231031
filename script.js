@@ -28,12 +28,11 @@ function stop() {
   }
 }
 
-
 function reset() {
   clearInterval(interval);
   isRunning = false;
   startButton.disabled = false;
-  interval = null; // インターバルをクリア
+  interval = null;
   updateTime();
 }
 
