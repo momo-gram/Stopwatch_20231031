@@ -24,7 +24,7 @@ body {
 .controls {
   display: flex;
   justify-content: center;
-  gap: 10px; /* ボタン間隔修正 */
+  gap: 10px; /* 修正: ボタン間の間隔を設定 */
 }
 
 button {
