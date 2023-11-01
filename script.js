@@ -46,7 +46,8 @@ function resetStopwatch() {
 function updateTime() {
     const currentTime = Date.now();
     const elapsedTime = new Date(currentTime - startTime);
+    const hours = elapsedTime.getUTCHours();
     const minutes = elapsedTime.getUTCMinutes();
     const seconds = elapsedTime.getUTCSeconds();
-    document.querySelector('.time').textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}:00`;
+    document.querySelector('.time').textContent = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
 }
