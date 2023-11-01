@@ -4,6 +4,7 @@ let running = false;
 
 function startStopwatch() {
     if (!running) {
+        // スタートボタンがクリックされたときの処理
         startTime = Date.now() - (startTime ? startTime : 0);
         intervalId = setInterval(updateTime, 1000);
         running = true;
@@ -14,6 +15,7 @@ function startStopwatch() {
 
 function stopStopwatch() {
     if (running) {
+        // ストップボタンがクリックされたときの処理
         clearInterval(intervalId);
         running = false;
         document.getElementById('start').disabled = false;
@@ -23,6 +25,7 @@ function stopStopwatch() {
 
 function resetStopwatch() {
     if (!running) {
+        // リセットボタンがクリックされたときの処理
         startTime = 0;
         updateTime();
         document.getElementById('start').disabled = false;
@@ -36,5 +39,6 @@ function updateTime() {
     const hours = elapsedTime.getUTCHours();
     const minutes = elapsedTime.getUTCMinutes();
     const seconds = elapsedTime.getUTCSeconds();
+    // 経過時間を表示
     document.querySelector('.time').textContent = `${hours}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
 }
