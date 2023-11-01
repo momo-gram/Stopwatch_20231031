@@ -4,11 +4,11 @@ let running = false;
 
 function startStopwatch() {
     if (!running) {
-        // スタートボタンがクリックされたときの処理
+        // スタートボタン押下時処理
         startTime = Date.now() - (startTime ? startTime : 0);
-        intervalId = setInterval(updateTime, 10); // 10ミリ秒ごとに更新
+        intervalId = setInterval(updateTime, 10); // 10ミリ秒毎更新
         running = true;
-        document.getElementById('start').disabled = true; // スタートボタンを無効に
+        document.getElementById('start').disabled = true; // スタートボタンを無効
         document.getElementById('stop').disabled = false;
         document.getElementById('reset').disabled = true;
     }
@@ -19,7 +19,7 @@ function stopStopwatch() {
         // ストップボタンが押下時処理
         clearInterval(intervalId);
         running = false;
-        document.getElementById('start').disabled = false; // スタートボタンを有効に
+        document.getElementById('start').disabled = false; // スタートボタンを有効
         document.getElementById('stop').disabled = true;
         document.getElementById('reset').disabled = false;
     }
@@ -30,7 +30,7 @@ function resetStopwatch() {
         // リセットボタン押下時処理
         startTime = 0;
         updateTime();
-        document.getElementById('start').disabled = false; // スタートボタンを有効に
+        document.getElementById('start').disabled = false; // スタートボタンを有効
         document.getElementById('stop').disabled = true;
         document.getElementById('reset').disabled = true;
     }
