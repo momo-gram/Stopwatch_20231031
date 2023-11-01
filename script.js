@@ -45,4 +45,5 @@ function updateTime() {
     const seconds = elapsedTime.getUTCSeconds();
     const milliseconds = Math.floor(elapsedTime.getUTCMilliseconds() / 10);
     const hours = Math.floor(minutes / 60);
-    document.querySelector('.time').textContent =
+    document.querySelector('.time').textContent = `${String(hours).padStart(2, '0')}:${String(minutes % 60).padStart(2, '0')}:${String(seconds).padStart(2, '0')}:${String(milliseconds).padStart(2, '0')}`;
+}
