@@ -1,47 +1,41 @@
-let startTime = 0;
-let intervalId = null;
+let timerInterval;
 let running = false;
-
-document.getElementById('start').addEventListener('click', startStopwatch);
-document.getElementById('stop').addEventListener('click', stopStopwatch);
-document.getElementById('reset').addEventListener('click', resetStopwatch);
+let elapsedTime = 0;
 
 function startStopwatch() {
-    if (!running) {
-        startTime = Date.now() - (running ? Date.now() - startTime : 0);
-        intervalId = setInterval(updateTime, 10);
-        running = true;
-        document.getElementById('start').disabled = true;
-        document.getElementById('stop').disabled = false;
-        document.getElementById('reset').disabled = false;
-    }
+  if (!running) {
+    running = true;
+    document.getElementById("start").disabled = true;
+    document.getElementById("stop").disabled = false;
+    document.getElementById("reset").disabled = true;
+    timerInterval = setInterval(updateTime, 10);
+  }
 }
 
 function stopStopwatch() {
-    if (running) {
-        clearInterval(intervalId);
-        running = false;
-        document.getElementById('start').disabled = false;
-        document.getElementById('stop').disabled = true;
-    }
+  if (running) {
+    running = false;
+    document.getElementById("start").disabled = false;
+    document.getElementById("stop").disabled = true;
+    document.getElementById("reset").disabled = false;
+    clearInterval(timerInterval);
+  }
 }
 
 function resetStopwatch() {
-    if (!running) {
-        clearInterval(intervalId);
-        startTime = 0;
-        updateTime();
-        document.getElementById('start').disabled = false;
-        document.getElementById('stop').disabled = true;
-        document.getElementById('reset').disabled = true;
-    }
+  if (!running) {
+    elapsedTime = 0;
+    updateTime();
+  }
 }
 
 function updateTime() {
-    const currentTime = Date.now();
-    const elapsedTime = new Date(currentTime - startTime);
-    const minutes = elapsedTime.getUTCMinutes();
-    const seconds = elapsedTime.getUTCSeconds();
-    const milliseconds = elapsedTime.getUTCMilliseconds();
-    document.getElementById('stopwatch').textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}:${String(milliseconds).padStart(2, '0')}`;
+  const centiseconds = String(elapsedTime % 100).padStart(2, "0");
+  const seconds = String(Math.floor((elapsedTime / 100) % 60)).padStart(2, "0");
+  const minutes = String(Math.floor((elapsedTime / 6000) % 60)).padStart(2, "0");
+  const hours = String(Math.floor(elapsedTime / 360000)).padStart(2, "0");
+  document.getElementById("stopwatch").textContent = `${hours}:${minutes}:${seconds}:${centiseconds}`;
+  elapsedTime += 1;
 }
+
+updateTime();
