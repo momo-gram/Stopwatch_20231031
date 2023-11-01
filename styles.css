@@ -28,9 +28,9 @@ button {
 }
 button:hover {
     cursor: pointer;
-    background-color: #D4BB92;
+    background-color: powderblue;
 }
 button:disabled {
     cursor: default;
-    background-color: #D4BB92;
+    background-color: powderblue;
 }
