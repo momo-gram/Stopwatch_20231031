@@ -1,46 +1,16 @@
-let startTime;
-let interval;
-let isRunning = false;
-
-const timeDisplay = document.querySelector(".time");
-const startButton = document.getElementById("start");
-const stopButton = document.getElementById("stop");
-const resetButton = document.getElementById("reset");
-
-startButton.addEventListener("click", start);
-stopButton.addEventListener("click", stop);
+// リセットボタンのクリックイベントをリセット関数に関連付ける
 resetButton.addEventListener("click", reset);
 
-function start() {
-  if (!isRunning) {
-    startTime = Date.now() - (interval || 0);
-    interval = setInterval(updateTime, 10);
-    isRunning = true;
-    startButton.disabled = true;
-  }
-}
-
-function stop() {
-  if (isRunning) {
-    clearInterval(interval);
-    isRunning = false;
-    startButton.disabled = false;
-  }
-}
-
 function reset() {
+  // インターバルをクリア
   clearInterval(interval);
   isRunning = false;
   startButton.disabled = false;
-  interval = null; // `interval` を `null` に設定
-  startTime = null; // `startTime` を `null` に設定
-  updateTime();
-}
 
-function updateTime() {
-  const elapsedTime = Date.now() - startTime;
-  const minutes = Math.floor(elapsedTime / 60000);
-  const seconds = Math.floor((elapsedTime % 60000) / 1000);
-  const milliseconds = (elapsedTime % 1000).toString().slice(0, 2);
-  timeDisplay.textContent = `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}:${String(milliseconds).padStart(2, "0")}`;
+  // startTimeとintervalを0に戻す
+  startTime = 0;
+  interval = 0;
+
+  // タイマーを0にセット
+  updateTime();
 }
