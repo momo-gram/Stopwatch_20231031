@@ -1,19 +1,16 @@
-/* ストップウォッチ全体のスタイリング */
 .stopwatch {
     text-align: center;
     font-size: 24px;
     margin-top: 50px;
 }
 
-/* 現在の時間のスタイリング */
 .time {
     font-size: 36px;
     margin-bottom: 10px;
 }
 
-/* ボタンのスタイリング */
 .controls button {
     margin: 5px;
-    background-color: lightblue; /* ボタンの背景色を水色に設定 */
-    border: 2px solid blue; /* ボタンの外枠を太くする */
+    background-color: lightblue;
+    border: 2px solid blue;
 }
