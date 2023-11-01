@@ -4,7 +4,7 @@ let running = false;
 
 function startStopwatch() {
     if (!running) {
-        startTime = Date.now() - (startTime ? startTime : 0);
+        startTime = Date.now() - (running ? startTime : 0);
         intervalId = setInterval(updateTime, 10);
         running = true;
         document.getElementById('start').disabled = true;
@@ -25,6 +25,7 @@ function stopStopwatch() {
 
 function resetStopwatch() {
     if (!running) {
+        clearInterval(intervalId); // インターバルをクリア
         startTime = 0;
         updateTime();
         document.getElementById('start').disabled = false;
