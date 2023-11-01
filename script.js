@@ -29,10 +29,10 @@ function stop() {
 }
 
 function reset() {
-  clearInterval(interval);
+ clearInterval(interval);
   isRunning = false;
   startButton.disabled = false;
-  interval = null; // `null` に設定
+  interval = 0; // `0` に設定
   startTime = null; // `null` に設定
   updateTime();
 }
