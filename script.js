@@ -38,4 +38,12 @@ function updateTime() {
 
 function formatTime(milliseconds) {
   const date = new Date(milliseconds);
-  const minutes = date
+  const minutes = date.getUTCMinutes().toString().padStart(2, '0');
+  const seconds = date.getSeconds().toString().padStart(2, '0');
+  const milliseconds = date.getMilliseconds().toString().padStart(3, '0');
+  return `${minutes}:${seconds}:${milliseconds}`;
+}
+
+startButton.addEventListener('click', startTimer);
+stopButton.addEventListener('click', stopTimer);
+resetButton.addEventListener('click', resetTimer);
